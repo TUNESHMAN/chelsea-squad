@@ -15,6 +15,7 @@ Human.prototype.speak = function() {
 function Man(attribute) {
   Human.call(this, attribute);
   this.shoeSize = attribute.shoeSize;
+  this.canRun = attribute.canRun;
 }
 Man.prototype = Object.create(Human.prototype);
 
@@ -26,14 +27,29 @@ Man.prototype.run = function() {
   }
 };
 
-let guy = new Man({
+let guy = new Human({
   name: `Babatunde`,
   age: 27,
   complexion: `fair`,
   favoriteFood: `Wheat`,
-  canRun: true
 });
 
+let babe = new Man({
+  name: `Vivian`,
+  age: 26,
+  complexion: `dark`,
+  favoriteFood: `eba`,
+  canRun : false,
+
+})
+
 console.log(guy);
-console.log(guy.run());
+console.log(guy.eat());
+console.log(guy.speak());
+console.log(babe);
+console.log(babe.run());
+console.log(`${guy.name} loves ${babe.name}`);
+
+
+
 
