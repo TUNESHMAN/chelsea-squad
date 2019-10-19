@@ -5,7 +5,7 @@ function Human(attribute) {
   this.favoriteFood = attribute.favoriteFood;
 }
 Human.prototype.eat = function() {
-  return ` I love to eat ${this.favoriteFood}`;
+  return ` ${this.name} loves to eat ${this.favoriteFood}`;
 };
 
 Human.prototype.speak = function() {
@@ -27,11 +27,32 @@ Man.prototype.run = function() {
   }
 };
 
+function LittleMan(attribute) {
+  Man.call(this, attribute);
+  this.favClub = attribute.favClub;
+}
+
+
+LittleMan.prototype = Object.create(Man.prototype);
+
+LittleMan.prototype.fun = function() {
+  return `${this.name} is a ${this.favClub} fan`;
+};
+
+let youngBoy = new LittleMan({
+  name: `Oluwatoba`,
+  age: 21,
+  complexion: `fair`,
+  favoriteFood: `Salad`,
+  canRun: true,
+  favClub: `Chelsea`
+});
+
 let guy = new Human({
   name: `Babatunde`,
   age: 27,
   complexion: `fair`,
-  favoriteFood: `Wheat`,
+  favoriteFood: `Wheat`
 });
 
 let babe = new Man({
@@ -39,9 +60,8 @@ let babe = new Man({
   age: 26,
   complexion: `dark`,
   favoriteFood: `eba`,
-  canRun : false,
-
-})
+  canRun: false
+});
 
 console.log(guy);
 console.log(guy.eat());
@@ -49,6 +69,12 @@ console.log(guy.speak());
 console.log(babe);
 console.log(babe.run());
 console.log(`${guy.name} loves ${babe.name}`);
+console.log(youngBoy);
+console.log(youngBoy.run());
+console.log(youngBoy.favClub);
+console.log(youngBoy.fun());
+console.log(youngBoy.eat());
+
 
 
 
